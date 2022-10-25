@@ -1,13 +1,14 @@
-# Event Record #
+# PDF.JS-Renderer #
 
 This Module is an API-Plugin. It provides methods to render PDFs within Moodle.
 To render a desired PDF use the following code:
 
-
+```
 $fs = get_file_storage();
 $fileobject = $fs->get_file_by_id($desiredfileid);
 $renderable = new \local_pdfjsrenderer\output\pdfjs_renderer($fileobject);
 $rendered_content = $OUTPUT->render($renderable);
+````
 
 ## Installing via uploaded ZIP file ##
 
