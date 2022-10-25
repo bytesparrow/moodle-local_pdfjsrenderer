@@ -1,0 +1,19 @@
+{
+    "name": "null/pdfjsrenderer",
+    "description": "This is an JS-API-Plugin. It does nothing by itself. Is used for rendering PDFs",
+    "type": "moodle-local",
+    "keywords": ["moodle", "api", "pdf", "pdfjs"],
+    "license": "GPLv3",
+    "version": "dev-master",
+    "authors": [
+        {
+            "name": "Bernhard Strehl"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "composer/installers": "~1.0"
+    }
+    
+}
+

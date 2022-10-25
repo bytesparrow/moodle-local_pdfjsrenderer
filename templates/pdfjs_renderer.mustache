@@ -1,0 +1,88 @@
+{{!
+    This file is part of Moodle - https://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_pdfjsrenderer/pdfjs_renderer
+
+    Here a placeholder to hold the desired PDF-content is defined.
+
+    Classes required for JS:
+    * local_pdfjsrenderer/PDFReader
+
+    Data attributes required for JS:
+    * some
+
+    Context variables required for this template:
+    * none
+
+    Example context (json):
+    {
+        pdffileid
+        pdffileurl
+    }
+}}
+
+
+<div id="{{pdffileid}}-html5pdf"  class="">
+    <div class=html5pdf_control id="{{pdffileid}}_control">
+        <i id="{{pdffileid}}_prev" class="html5pdfsprite html5pdfsprite-last"></i> 
+        <span class="html5pdf_pager"><span id="{{pdffileid}}_page_num">-</span> / <span id="{{pdffileid}}_page_count">-</span></span>
+        <i id="{{pdffileid}}_next" class="html5pdfsprite html5pdfsprite-next"></i>
+        <i id="{{pdffileid}}_zoomin" class="html5pdfsprite html5pdfsprite-zoomin"></i>
+        <i id="{{pdffileid}}_zoomout" class="html5pdfsprite html5pdfsprite-zoomout"></i>
+    </div>
+ 
+    <div  id="{{pdffileid}}_pdfscrollcontainer" class="html5pdf_pdfscrollcontainer"><div>
+        <canvas id="{{pdffileid}}_pdfcanvas"  class="pdf_canvas"></canvas></div></div>
+</div>
+{{#js}}
+let containerwidth = document.getElementById("{{pdffileid}}-html5pdf").offsetWidth;
+
+//sollte vielleicht auch nicht in dieses plugin sondern in nutzende Plugins. Mal sehen..
+let success_callback =  function()
+{
+    document.getElementById("{{pdffileid}}_pdfcanvas").classList.add("pdf_canvas_loaded");
+    const pdfloaded_event = new CustomEvent('pdfjs_renderer_loadevent', 
+    { detail: {
+        identifier: "{{pdffileid}}",
+        time: new Date()
+            } 
+    });
+    document.dispatchEvent(pdfloaded_event);
+};
+let error_callback = function()
+{
+    document.getElementById("{{pdffileid}}_pdfscrollcontainer").innerHTML ='<div style="background:white;min-height: 70px;"><div class="alert alert-block alert-danger messages error">{{#str}} text_errorloadingpdf, local_pdfjsrenderer{{/str}}</div></div>';  
+}
+require(['local_pdfjsrenderer/PDFReader'], function(PDFReader) { 
+    PDFReader.create({
+        pdffileurl: '{{pdffileurl}}',
+        pdffileid: '{{pdffileid}}',
+        width: containerwidth+"",
+        html_pagecount_id: '{{pdffileid}}_page_count',
+        html_currentpage_id: '{{pdffileid}}_page_num',
+        html_pdfcanvas_id: '{{pdffileid}}_pdfcanvas',
+        html_pdfscrollcontainer_id: '{{pdffileid}}_pdfscrollcontainer',
+        html_next_id: '{{pdffileid}}_next',
+        html_prev_id: '{{pdffileid}}_prev',
+        html_zoomin_id: '{{pdffileid}}_zoomin',
+        html_zoomout_id: '{{pdffileid}}_zoomout',
+        callback_pdfloaded: success_callback,
+        callback_pdffailure: error_callback
+    });
+});
+
+{{/js}}
