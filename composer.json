@@ -1,13 +1,16 @@
 {
-    "name": "null/pdfjsrenderer",
-    "description": "This is an JS-API-Plugin. It does nothing by itself. Is used for rendering PDFs",
+    "name": "bytesparrow/pdfjsrenderer",
+    "description": "This is an JS-API-Plugin. It does nothing by itself. It's used for rendering PDFs",
     "type": "moodle-local",
     "keywords": ["moodle", "api", "pdf", "pdfjs"],
     "license": "GPLv3",
-    "version": "dev-master",
+    "version": "dev-main",
     "authors": [
         {
-            "name": "Bernhard Strehl"
+            "name": "Bernhard Strehl",
+            "email": "moodle@bytesparrow.de",
+            "homepage": "https://www.bytesparrow.de",
+            "role": "Developer"
         }
     ],
     "require": {
