@@ -26,6 +26,6 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_pdfjsrenderer';
 $plugin->release = '0.1.1';
-$plugin->version = 2022101100;
+$plugin->version = 2022101101;
 $plugin->requires = 2022041900;
-$plugin->maturity = MATURITY_ALPHA;
+$plugin->maturity = MATURITY_RC;

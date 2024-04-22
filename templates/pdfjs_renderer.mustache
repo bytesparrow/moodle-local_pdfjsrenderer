@@ -35,8 +35,8 @@
     }
 }}
 
-
-<div id="{{pdffileid}}-html5pdf"  class="">
+<!--html5pdf-->
+<div id="{{pdffileid}}-html5pdf"  class="html5pdf-wrapper">
     <div class=html5pdf_control id="{{pdffileid}}_control">
         <i id="{{pdffileid}}_prev" class="fa fa-chevron-left"></i> 
         <span class="html5pdf_pager"><span id="{{pdffileid}}_page_num">-</span> / <span id="{{pdffileid}}_page_count">-</span></span>
@@ -49,6 +49,7 @@
     <div  id="{{pdffileid}}_pdfscrollcontainer" class="html5pdf_pdfscrollcontainer"><div>
         <canvas id="{{pdffileid}}_pdfcanvas"  class="pdf_canvas"></canvas></div></div>
 </div>
+<!--/html5pdf-->
 {{#js}}
 let containerwidth = document.getElementById("{{pdffileid}}-html5pdf").offsetWidth;
 

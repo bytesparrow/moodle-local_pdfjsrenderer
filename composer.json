@@ -4,7 +4,7 @@
     "type": "moodle-local",
     "keywords": ["moodle", "api", "pdf", "pdfjs"],
     "license": "GPLv3",
-    "version": "dev-main",
+    "version": "v1.1",
     "authors": [
         {
             "name": "Bernhard Strehl",
