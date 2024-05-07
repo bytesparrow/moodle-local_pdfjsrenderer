@@ -54,9 +54,11 @@
 let containerwidth = document.getElementById("{{pdffileid}}-html5pdf").offsetWidth;
 
 //sollte vielleicht auch nicht in dieses plugin sondern in nutzende Plugins. Mal sehen..
+//soll schon hier rein. Nutzende Plugins können das Event ja fangen.
 let success_callback =  function()
 {
-    document.getElementById("{{pdffileid}}_pdfcanvas").classList.add("pdf_canvas_loaded");
+    document.getElementById("{{pdffileid}}_pdfcanvas").classList.add("pdf_loaded");
+    document.getElementById("{{pdffileid}}_pdfcanvas").closest(".html5pdf_pdfscrollcontainer").classList.add("pdf_loaded");
     const pdfloaded_event = new CustomEvent('pdfjs_renderer_loadevent', 
     { detail: {
         identifier: "{{pdffileid}}",

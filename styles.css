@@ -45,13 +45,17 @@
     overflow: scroll;
     width:100%;
 }
+.html5pdf_pdfscrollcontainer.pdf_loaded
+{
+    background: none;
+}
 canvas.pdf_canvas
 {
 
     /*wird per js auf sichtbar gesetzt, sobald geladen
     display:none;*/
 }
-canvas.pdf_canvas_loaded
+canvas.pdf_canvas.pdf_loaded
 {
     border:1px solid black;
 }
